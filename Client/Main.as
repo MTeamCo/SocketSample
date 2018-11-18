@@ -7,6 +7,7 @@ package
 	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
 	import flash.events.ProgressEvent;
+	import flash.events.SecurityErrorEvent;
 	import flash.net.Socket;
 	
 	public class Main extends MovieClip
@@ -36,8 +37,23 @@ package
 			socketListener.addEventListener(ProgressEvent.SOCKET_DATA,socketDataRecevied);
 			socketListener.addEventListener(Event.CONNECT,socketConnected);
 			socketListener.addEventListener(IOErrorEvent.IO_ERROR,noConnectionAvailable);
+			socketListener.addEventListener(Event.CLOSE,socketClosed);
+			socketListener.addEventListener(SecurityErrorEvent.SECURITY_ERROR,sercurityError);
 			
 			reconect();
+		}
+		
+		protected function sercurityError(event:SecurityErrorEvent):void
+		{
+			Alert.show("Security error");
+			noConnectionAvailable(null);
+		}
+		
+		
+		protected function socketClosed(event:Event):void
+		{
+			Alert.show("Socket closed");
+			noConnectionAvailable(null);
 		}
 		
 		private function reconect(e=null):void
@@ -49,7 +65,10 @@ package
 		
 		protected function noConnectionAvailable(event:IOErrorEvent):void
 		{
-			Alert.show("Connection faild. click to reconnect");
+			if(event!=null)
+			{
+				Alert.show("Connection faild. click to reconnect");
+			}
 			stage.removeEventListener(MouseEvent.CLICK,sendSampleData);
 			stage.addEventListener(MouseEvent.CLICK,reconect);
 		}
@@ -63,7 +82,7 @@ package
 		
 		protected function sendSampleData(event:MouseEvent):void
 		{
-			var samplePacket:String = "Hello from kheshti "+Math.random() ;
+			var samplePacket:String = "Hello from sepehr "+Math.random() ;
 			Alert.show("This data sent : "+samplePacket);
 			socketListener.writeUTFBytes(samplePacket);
 			socketListener.flush();
