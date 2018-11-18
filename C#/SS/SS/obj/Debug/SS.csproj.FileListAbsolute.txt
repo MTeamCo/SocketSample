@@ -1,0 +1,9 @@
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\bin\Debug\SS.exe.config
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\bin\Debug\SS.exe
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\bin\Debug\SS.pdb
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\obj\Debug\SS.exe
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\obj\Debug\SS.pdb
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\bin\Debug\SS.exe.manifest
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\bin\Debug\SS.application
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\obj\Debug\SS.exe.manifest
+c:\users\mteam\documents\visual studio 2017\Projects\SS\SS\obj\Debug\SS.application

@@ -1,0 +1,10 @@
+G:\Jalil\Socket\Socket\bin\Debug\Socket.exe.config
+G:\Jalil\Socket\Socket\bin\Debug\Socket.exe.manifest
+G:\Jalil\Socket\Socket\bin\Debug\Socket.application
+G:\Jalil\Socket\Socket\bin\Debug\Socket.exe
+G:\Jalil\Socket\Socket\bin\Debug\Socket.pdb
+G:\Jalil\Socket\Socket\obj\Debug\Socket.csprojResolveAssemblyReference.cache
+G:\Jalil\Socket\Socket\obj\Debug\Socket.exe.manifest
+G:\Jalil\Socket\Socket\obj\Debug\Socket.application
+G:\Jalil\Socket\Socket\obj\Debug\Socket.exe
+G:\Jalil\Socket\Socket\obj\Debug\Socket.pdb
