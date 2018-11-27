@@ -144,8 +144,7 @@ namespace ServerTCPService
         {
             try
             {
-                string data = Encoding.UTF8.GetString(byteBuffer, 0, size);
-                var test = Properties.Settings.Default.__connection;
+                string data = Encoding.UTF8.GetString(byteBuffer, 0, size); 
                 Services.SaveData(data);
                 int lineEndIndex = 0;
 

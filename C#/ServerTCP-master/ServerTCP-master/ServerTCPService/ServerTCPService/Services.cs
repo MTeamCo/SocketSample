@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ServerTCPService.Asset;
 
 namespace ServerTCPService
 {
@@ -17,19 +18,29 @@ namespace ServerTCPService
 
             try
             {
-                var test = Properties.Settings.Default.__connection;
-                using (SqlConnection con = new SqlConnection(test))
+                //var test = Properties.Settings.Default.__connection;
+                //using (SqlConnection con = new SqlConnection(test))
+                //{
+
+                //    string aquery = "INSERT INTO [dbo].[TruckLocations]" +
+                //                    "([TruckId],[Latitude],[Longitiude])" +
+                //                    "VALUES(19,'from clinet','" + data.ToString() + "')";
+
+                //    con.Open();
+                //    SqlCommand aCommand = new SqlCommand(aquery, con);
+                //    cmm = aCommand.ExecuteScalar();
+                //    SqlCommand command = new SqlCommand(query, con);
+                //    command.ExecuteNonQuery();
+                //}
+                using (Post_DbEntities db = new Post_DbEntities())
                 {
-
-                    string aquery = "INSERT INTO [dbo].[TruckLocations]" +
-                                    "([TruckId],[Latitude],[Longitiude])" +
-                                    "VALUES(19,'from clinet','" + data.ToString() + "')";
-
-                    con.Open();
-                    SqlCommand aCommand = new SqlCommand(aquery, con);
-                    cmm = aCommand.ExecuteScalar();
-                    SqlCommand command = new SqlCommand(query, con);
-                    command.ExecuteNonQuery();
+                    db.TruckLocations.Add(new TruckLocation()
+                    {
+                        Latitude = "From client",
+                        TruckId = 19,
+                        Longitiude = data
+                    });
+                    db.SaveChanges();
                 }
             }
             catch (Exception e)

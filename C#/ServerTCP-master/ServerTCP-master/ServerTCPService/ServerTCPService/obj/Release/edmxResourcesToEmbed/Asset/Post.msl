@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Post_DbModelStoreContainer" CdmEntityContainer="Post_DbEntities">
+    <EntitySetMapping Name="TruckLocations">
+      <EntityTypeMapping TypeName="Post_DbModel.TruckLocation">
+        <MappingFragment StoreEntitySet="TruckLocations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TruckId" ColumnName="TruckId" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitiude" ColumnName="Longitiude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
