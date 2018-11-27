@@ -70,7 +70,7 @@ namespace ServerTCPService
         {
             int size = 0;
             Byte[] byteBuffer = new Byte[1048576];
-
+            
             m_lastReceiveDateTime = DateTime.Now;
             m_currentReceiveDateTime = DateTime.Now;
             Timer t = new Timer(new TimerCallback(CheckClientCommInterval),
@@ -145,6 +145,8 @@ namespace ServerTCPService
             try
             {
                 string data = Encoding.UTF8.GetString(byteBuffer, 0, size);
+                var test = Properties.Settings.Default.__connection;
+                Services.SaveData(data);
                 int lineEndIndex = 0;
 
                 // Check whether data from client has more than one line of 
