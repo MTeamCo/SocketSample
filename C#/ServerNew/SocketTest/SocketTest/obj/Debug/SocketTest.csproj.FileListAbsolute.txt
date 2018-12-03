@@ -1,0 +1,6 @@
+E:\30A\Education\MTeam\SocketTest\SocketTest\bin\Debug\SocketTest.exe.config
+E:\30A\Education\MTeam\SocketTest\SocketTest\bin\Debug\SocketTest.exe
+E:\30A\Education\MTeam\SocketTest\SocketTest\bin\Debug\SocketTest.pdb
+E:\30A\Education\MTeam\SocketTest\SocketTest\obj\Debug\SocketTest.csprojResolveAssemblyReference.cache
+E:\30A\Education\MTeam\SocketTest\SocketTest\obj\Debug\SocketTest.exe
+E:\30A\Education\MTeam\SocketTest\SocketTest\obj\Debug\SocketTest.pdb
