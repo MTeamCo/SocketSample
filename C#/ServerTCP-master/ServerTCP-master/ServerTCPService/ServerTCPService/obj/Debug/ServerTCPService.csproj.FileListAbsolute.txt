@@ -25,3 +25,6 @@ C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\D
 C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.Properties.Resources.resources
 C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.csproj.GenerateResource.Cache
 C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.exe
+E:\30A\Education\MTeam\SocketSample\C#\ServerTCP-master\ServerTCP-master\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.exe.config
+E:\30A\Education\MTeam\SocketSample\C#\ServerTCP-master\ServerTCP-master\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.exe
+E:\30A\Education\MTeam\SocketSample\C#\ServerTCP-master\ServerTCP-master\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.pdb
