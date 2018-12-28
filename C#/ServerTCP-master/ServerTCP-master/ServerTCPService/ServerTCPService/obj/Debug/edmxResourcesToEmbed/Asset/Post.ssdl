@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Post_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TruckLocations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TruckId" Type="int" Nullable="false" />
+    <Property Name="Latitude" Type="nvarchar(max)" />
+    <Property Name="Longitiude" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="Post_DbModelStoreContainer">
+    <EntitySet Name="TruckLocations" EntityType="Self.TruckLocations" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

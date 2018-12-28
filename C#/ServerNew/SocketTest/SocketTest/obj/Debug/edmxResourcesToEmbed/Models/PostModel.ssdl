@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Post_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PostmanLocations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostmanId" Type="int" Nullable="false" />
+    <Property Name="Latitude" Type="nvarchar(max)" />
+    <Property Name="Longitiude" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Postmen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostmanTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="TownId" Type="int" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="RegDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Password" Type="nvarchar" MaxLength="150" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="150" />
+    <Property Name="SmartNumber" Type="nvarchar" MaxLength="150" />
+    <Property Name="ActiveCode" Type="nvarchar" MaxLength="150" />
+    <Property Name="NationalCode" Type="nvarchar" MaxLength="150" />
+    <Property Name="PostOfficeId" Type="int" Nullable="false" />
+    <Property Name="NationalCard" Type="nvarchar(max)" />
+    <Property Name="BirthCard" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PostOfficeSessions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostOfficeId" Type="int" Nullable="false" />
+    <Property Name="Token" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OneSignalId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_PostmanLocations_dbo_Postmen_PostmanId">
+    <End Role="Postmen" Type="Self.Postmen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PostmanLocations" Type="Self.PostmanLocations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Postmen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostmanLocations">
+        <PropertyRef Name="PostmanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Post_DbModelStoreContainer">
+    <EntitySet Name="PostmanLocations" EntityType="Self.PostmanLocations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Postmen" EntityType="Self.Postmen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostOfficeSessions" EntityType="Self.PostOfficeSessions" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" Association="Self.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId">
+      <End Role="Postmen" EntitySet="Postmen" />
+      <End Role="PostmanLocations" EntitySet="PostmanLocations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

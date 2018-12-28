@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Post_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PostmanLocations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostmanId" Type="Int32" Nullable="false" />
+    <Property Name="Latitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Longitiude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Postmen" Relationship="Self.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" FromRole="PostmanLocations" ToRole="Postmen" />
+  </EntityType>
+  <EntityType Name="Postmen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostmanTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TownId" Type="Int32" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="RegDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SmartNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ActiveCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NationalCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PostOfficeId" Type="Int32" Nullable="false" />
+    <Property Name="NationalCard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BirthCard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PostmanLocations" Relationship="Self.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" FromRole="Postmen" ToRole="PostmanLocations" />
+  </EntityType>
+  <EntityType Name="PostOfficeSessions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostOfficeId" Type="Int32" Nullable="false" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OneSignalId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_dbo_PostmanLocations_dbo_Postmen_PostmanId">
+    <End Role="Postmen" Type="Self.Postmen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PostmanLocations" Type="Self.PostmanLocations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Postmen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostmanLocations">
+        <PropertyRef Name="PostmanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Post_DbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PostmanLocations" EntityType="Self.PostmanLocations" />
+    <EntitySet Name="Postmen" EntityType="Self.Postmen" />
+    <EntitySet Name="PostOfficeSessions" EntityType="Self.PostOfficeSessions" />
+    <AssociationSet Name="FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" Association="Self.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId">
+      <End Role="Postmen" EntitySet="Postmen" />
+      <End Role="PostmanLocations" EntitySet="PostmanLocations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

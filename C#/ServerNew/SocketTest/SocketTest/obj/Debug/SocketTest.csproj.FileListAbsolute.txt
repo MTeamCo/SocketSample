@@ -10,3 +10,12 @@ E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\obj\Debug
 E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\SocketTest.exe
 E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\SocketTest.pdb
 E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\obj\Debug\SocketTest.csprojResolveAssemblyReference.cache
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\SocketTest.exe.manifest
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\SocketTest.application
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\obj\Debug\SocketTest.exe.manifest
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\obj\Debug\SocketTest.application
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\EntityFramework.dll
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\EntityFramework.SqlServer.dll
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\Helper.dll
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\EntityFramework.xml
+E:\30A\Education\MTeam\SocketSample\C#\ServerNew\SocketTest\SocketTest\bin\Debug\EntityFramework.SqlServer.xml

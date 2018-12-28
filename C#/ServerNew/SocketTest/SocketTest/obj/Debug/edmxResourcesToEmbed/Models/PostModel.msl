@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Post_DbModelStoreContainer" CdmEntityContainer="Post_DbEntities">
+    <EntitySetMapping Name="PostmanLocations">
+      <EntityTypeMapping TypeName="Post_DbModel.PostmanLocations">
+        <MappingFragment StoreEntitySet="PostmanLocations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PostmanId" ColumnName="PostmanId" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitiude" ColumnName="Longitiude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Postmen">
+      <EntityTypeMapping TypeName="Post_DbModel.Postmen">
+        <MappingFragment StoreEntitySet="Postmen">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PostmanTypeId" ColumnName="PostmanTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TownId" ColumnName="TownId" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RegDateTime" ColumnName="RegDateTime" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="SmartNumber" ColumnName="SmartNumber" />
+          <ScalarProperty Name="ActiveCode" ColumnName="ActiveCode" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="PostOfficeId" ColumnName="PostOfficeId" />
+          <ScalarProperty Name="NationalCard" ColumnName="NationalCard" />
+          <ScalarProperty Name="BirthCard" ColumnName="BirthCard" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostOfficeSessions">
+      <EntityTypeMapping TypeName="Post_DbModel.PostOfficeSessions">
+        <MappingFragment StoreEntitySet="PostOfficeSessions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PostOfficeId" ColumnName="PostOfficeId" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="OneSignalId" ColumnName="OneSignalId" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -12,6 +13,7 @@ namespace SocketTest
    public class AsyncSocket
     {
         public static ManualResetEvent allDone = new ManualResetEvent(false);
+        public static List<Socket> _ClientList=new List<Socket>(); 
 
         public AsyncSocket()
         {
@@ -22,6 +24,8 @@ namespace SocketTest
             // Establish the local endpoint for the socket.  
             // The DNS name of the computer  
             // running the listener is "host.contoso.com".  
+            
+
             IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 31001);
 
             // Create a TCP/IP socket.  
@@ -53,7 +57,7 @@ namespace SocketTest
             {
                 Console.WriteLine(e.ToString());
             }
-
+            
             Console.WriteLine("\nPress ENTER to continue...");
             Console.Read();
 
@@ -67,6 +71,13 @@ namespace SocketTest
             // Get the socket that handles the client request.  
             Socket listener = (Socket)ar.AsyncState;
             Socket handler = listener.EndAccept(ar);
+
+            if (_ClientList.All(u => u != handler))
+            {
+                _ClientList.Add(handler);
+                WellCome(handler);
+            }
+
 
             // Create the state object.  
             StateObject state = new StateObject();
@@ -83,7 +94,6 @@ namespace SocketTest
             // from the asynchronous state object.  
             StateObject state = (StateObject)ar.AsyncState;
             Socket handler = state.workSocket;
-
             // Read data from the client socket.   
             int bytesRead = handler.EndReceive(ar);
 
@@ -106,11 +116,16 @@ namespace SocketTest
                     // Echo the data back to the client.  
                     Send(handler, content);
                 }
-                else {
+                else
+                {
                     // Not all data received. Get more.  
                     handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
-                    new AsyncCallback(ReadCallback), state);
+                        new AsyncCallback(ReadCallback), state);
                 }
+            }
+            else
+            {
+                _ClientList.Remove(handler);
             }
         }
 
@@ -144,6 +159,12 @@ namespace SocketTest
                 Console.WriteLine(e.ToString());
             }
         }
+
+       public static void WellCome(Socket handler)
+       {
+            byte[] byteData = Encoding.ASCII.GetBytes("Welcome");
+           handler.Send(byteData, byteData.Length, SocketFlags.None);
+       }
     }
     public class StateObject
     {

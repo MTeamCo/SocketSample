@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Post_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PostmanLocations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostmanId" Type="int" Nullable="false" />
+          <Property Name="Latitude" Type="nvarchar(max)" />
+          <Property Name="Longitiude" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Postmen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostmanTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="TownId" Type="int" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="RegDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="150" />
+          <Property Name="SmartNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="ActiveCode" Type="nvarchar" MaxLength="150" />
+          <Property Name="NationalCode" Type="nvarchar" MaxLength="150" />
+          <Property Name="PostOfficeId" Type="int" Nullable="false" />
+          <Property Name="NationalCard" Type="nvarchar(max)" />
+          <Property Name="BirthCard" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PostOfficeSessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostOfficeId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OneSignalId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_PostmanLocations_dbo_Postmen_PostmanId">
+          <End Role="Postmen" Type="Self.Postmen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PostmanLocations" Type="Self.PostmanLocations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postmen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostmanLocations">
+              <PropertyRef Name="PostmanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Post_DbModelStoreContainer">
+          <EntitySet Name="PostmanLocations" EntityType="Self.PostmanLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postmen" EntityType="Self.Postmen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostOfficeSessions" EntityType="Self.PostOfficeSessions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" Association="Self.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId">
+            <End Role="Postmen" EntitySet="Postmen" />
+            <End Role="PostmanLocations" EntitySet="PostmanLocations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Post_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PostmanLocations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostmanId" Type="Int32" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Longitiude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Postmen" Relationship="Self.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" FromRole="PostmanLocations" ToRole="Postmen" />
+        </EntityType>
+        <EntityType Name="Postmen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostmanTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TownId" Type="Int32" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="RegDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SmartNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NationalCode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PostOfficeId" Type="Int32" Nullable="false" />
+          <Property Name="NationalCard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BirthCard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PostmanLocations" Relationship="Self.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" FromRole="Postmen" ToRole="PostmanLocations" />
+        </EntityType>
+        <EntityType Name="PostOfficeSessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostOfficeId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OneSignalId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_dbo_PostmanLocations_dbo_Postmen_PostmanId">
+          <End Role="Postmen" Type="Self.Postmen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PostmanLocations" Type="Self.PostmanLocations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postmen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostmanLocations">
+              <PropertyRef Name="PostmanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Post_DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PostmanLocations" EntityType="Self.PostmanLocations" />
+          <EntitySet Name="Postmen" EntityType="Self.Postmen" />
+          <EntitySet Name="PostOfficeSessions" EntityType="Self.PostOfficeSessions" />
+          <AssociationSet Name="FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" Association="Self.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId">
+            <End Role="Postmen" EntitySet="Postmen" />
+            <End Role="PostmanLocations" EntitySet="PostmanLocations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Post_DbModelStoreContainer" CdmEntityContainer="Post_DbEntities">
+          <EntitySetMapping Name="PostmanLocations">
+            <EntityTypeMapping TypeName="Post_DbModel.PostmanLocations">
+              <MappingFragment StoreEntitySet="PostmanLocations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PostmanId" ColumnName="PostmanId" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitiude" ColumnName="Longitiude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postmen">
+            <EntityTypeMapping TypeName="Post_DbModel.Postmen">
+              <MappingFragment StoreEntitySet="Postmen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PostmanTypeId" ColumnName="PostmanTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TownId" ColumnName="TownId" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RegDateTime" ColumnName="RegDateTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="SmartNumber" ColumnName="SmartNumber" />
+                <ScalarProperty Name="ActiveCode" ColumnName="ActiveCode" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="PostOfficeId" ColumnName="PostOfficeId" />
+                <ScalarProperty Name="NationalCard" ColumnName="NationalCard" />
+                <ScalarProperty Name="BirthCard" ColumnName="BirthCard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostOfficeSessions">
+            <EntityTypeMapping TypeName="Post_DbModel.PostOfficeSessions">
+              <MappingFragment StoreEntitySet="PostOfficeSessions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PostOfficeId" ColumnName="PostOfficeId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="OneSignalId" ColumnName="OneSignalId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
