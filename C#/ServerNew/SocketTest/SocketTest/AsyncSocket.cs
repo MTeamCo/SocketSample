@@ -26,7 +26,7 @@ namespace SocketTest
             // running the listener is "host.contoso.com".  
             
 
-            IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 31001);
+            IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Parse("185.83.208.175"), 31001);
 
             // Create a TCP/IP socket.  
             Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

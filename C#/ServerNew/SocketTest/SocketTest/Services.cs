@@ -13,12 +13,12 @@ namespace SocketTest
 {
     public class Services
     {
-        public void ChooseMethode(ServiceMessage serviceMessage)
+        public void ChooseMethode(ObjectModel model)
         {
-            switch (serviceMessage.ErrorId)
+            switch (model.Id)
             {
                 case 1:
-                    InsertLocation(serviceMessage.Result);
+                    InsertLocation(model.Result);
                     break;
             }
         }
