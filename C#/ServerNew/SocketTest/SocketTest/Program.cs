@@ -16,6 +16,7 @@ namespace SocketTest
         static void Main(string[] args)
         {
             AsyncSocket.StartListening();
+            
             Console.ReadKey();
         }
 

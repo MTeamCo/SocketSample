@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Helper;
@@ -13,8 +14,10 @@ namespace SocketTest
 {
     public class Services
     {
+
         public void ChooseMethode(ObjectModel model)
         {
+
             switch (model.Id)
             {
                 case 1:
@@ -63,6 +66,11 @@ namespace SocketTest
                 var model = db.PostOfficeSessions.FirstOrDefault(u => u.Token == token);
                 return model?.Id ?? 0;
             }
+        }
+
+        public static void SavePostmanData(Socket handler, string content)
+        {
+            
         }
     }
 }

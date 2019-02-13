@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SocketTest.Models;
 
 namespace SocketTest
 {
@@ -14,6 +15,7 @@ namespace SocketTest
     {
         public static ManualResetEvent allDone = new ManualResetEvent(false);
         public static List<Socket> _ClientList=new List<Socket>(); 
+        public static List<PostmanLocationViewModel> _Postman=new List<PostmanLocationViewModel>(); 
 
         public AsyncSocket()
         {
@@ -26,7 +28,7 @@ namespace SocketTest
             // running the listener is "host.contoso.com".  
             
 
-            IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Parse("185.83.208.175"), 31001);
+            IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 31001);
 
             // Create a TCP/IP socket.  
             Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -118,6 +120,7 @@ namespace SocketTest
                 }
                 else
                 {
+                    Services.SavePostmanData(handler, content);
                     // Not all data received. Get more.  
                     handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
                         new AsyncCallback(ReadCallback), state);
