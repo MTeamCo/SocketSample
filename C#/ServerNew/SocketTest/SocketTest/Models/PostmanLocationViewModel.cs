@@ -18,5 +18,6 @@ namespace SocketTest.Models
         public string Token { get; set; }
         public string Latitude { get; set; }
         public string Longitiude { get; set; }
+        public Socket  Socket { get; set; }
     }
 }
