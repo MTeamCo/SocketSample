@@ -28,5 +28,7 @@ namespace SocketTest.Models
         public virtual DbSet<PostmanLocations> PostmanLocations { get; set; }
         public virtual DbSet<Postmen> Postmen { get; set; }
         public virtual DbSet<PostOfficeSessions> PostOfficeSessions { get; set; }
+        public virtual DbSet<UserRequests> UserRequests { get; set; }
+        public virtual DbSet<PostmanSessions> PostmanSessions { get; set; }
     }
 }

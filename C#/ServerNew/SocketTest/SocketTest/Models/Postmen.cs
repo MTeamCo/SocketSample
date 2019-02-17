@@ -18,6 +18,7 @@ namespace SocketTest.Models
         public Postmen()
         {
             this.PostmanLocations = new HashSet<PostmanLocations>();
+            this.PostmanSessions = new HashSet<PostmanSessions>();
         }
     
         public int Id { get; set; }
@@ -39,5 +40,7 @@ namespace SocketTest.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PostmanLocations> PostmanLocations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PostmanSessions> PostmanSessions { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SocketTest.Models;
 
 namespace SocketTest
 {
@@ -14,6 +15,7 @@ namespace SocketTest
     {
         public static ManualResetEvent allDone = new ManualResetEvent(false);
         public static List<Socket> _ClientList=new List<Socket>(); 
+        public static List<PostmanLocationViewModel> _Postman=new List<PostmanLocationViewModel>(); 
 
         public AsyncSocket()
         {
@@ -118,6 +120,7 @@ namespace SocketTest
                 }
                 else
                 {
+                    Services.ChooseMethode(handler, content);
                     // Not all data received. Get more.  
                     handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
                         new AsyncCallback(ReadCallback), state);

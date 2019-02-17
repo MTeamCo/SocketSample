@@ -9,6 +9,9 @@
         <EntityTypeShape EntityType="Post_DbModel.Postmen" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Post_DbModel.PostOfficeSessions" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="Post_DbModel.FK_dbo_PostmanLocations_dbo_Postmen_PostmanId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Post_DbModel.UserRequests" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Post_DbModel.PostmanSessions" Width="1.5" PointX="3" PointY="5.125" />
+        <AssociationConnector Association="Post_DbModel.FK_dbo_PostmanSessions_dbo_Postmen_PostmanId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
